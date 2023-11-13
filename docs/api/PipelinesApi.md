@@ -4,41 +4,13 @@ All URIs are relative to *https://logging.de-txl.ionos.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**pipeline_key**](PipelinesApi.md#pipeline_key) | **POST** /pipelines/{pipelineId}/key | Renews the key of a Pipeline |
 | [**pipelines_delete**](PipelinesApi.md#pipelines_delete) | **DELETE** /pipelines/{pipelineId} | Delete a pipeline |
 | [**pipelines_find_by_id**](PipelinesApi.md#pipelines_find_by_id) | **GET** /pipelines/{pipelineId} | Fetch a pipeline |
 | [**pipelines_get**](PipelinesApi.md#pipelines_get) | **GET** /pipelines | List pipelines |
+| [**pipelines_key_post**](PipelinesApi.md#pipelines_key_post) | **POST** /pipelines/{pipelineId}/key | Renews the key of a Pipeline |
 | [**pipelines_patch**](PipelinesApi.md#pipelines_patch) | **PATCH** /pipelines/{pipelineId} | Patch a pipeline |
 | [**pipelines_post**](PipelinesApi.md#pipelines_post) | **POST** /pipelines | Create a pipeline |
 
-
-# **pipeline_key**
-> PipelineKey200Response pipeline_key(pipeline_id)
-
-Renews the key of a Pipeline
-
-Generates a new key for a pipeline invalidating the old one. The key is used for authentication when sending logs (Shared_Key parameter in the context of fluent-bit).
-
-### Example
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **pipeline_id** | **str**| The unique ID of the pipeline |  |
-
-### Return type
-
-[**PipelineKey200Response**](../models/PipelineKey200Response.md)
-
-### Authorization
-
-tokenAuth
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 # **pipelines_delete**
 > Pipeline pipelines_delete(pipeline_id)
@@ -126,6 +98,34 @@ tokenAuth
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+# **pipelines_key_post**
+> PipelinesKeyPost200Response pipelines_key_post(pipeline_id)
+
+Renews the key of a Pipeline
+
+Generates a new key for a pipeline invalidating the old one. The key is used for authentication when sending logs (Shared_Key parameter in the context of fluent-bit).
+
+### Example
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pipeline_id** | **str**| The unique ID of the pipeline |  |
+
+### Return type
+
+[**PipelinesKeyPost200Response**](../models/PipelinesKeyPost200Response.md)
+
+### Authorization
+
+tokenAuth
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 # **pipelines_patch**
 > Pipeline pipelines_patch(pipeline_id, pipeline)
 
@@ -140,7 +140,7 @@ Patch attributes of a logging pipeline.
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **pipeline_id** | **str**| The unique ID of the pipeline |  |
-| **pipeline** | [**PatchRequest**](../models/PatchRequest.md)| The modified pipeline. |  |
+| **pipeline** | [**PipelinePatch**](../models/PipelinePatch.md)| The modified pipeline. |  |
 
 ### Return type
 
@@ -168,7 +168,7 @@ Creates a new logging pipeline.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pipeline** | [**CreateRequest**](../models/CreateRequest.md)| The pipeline to be created. |  |
+| **pipeline** | [**PipelineCreate**](../models/PipelineCreate.md)| The pipeline to be created. |  |
 
 ### Return type
 

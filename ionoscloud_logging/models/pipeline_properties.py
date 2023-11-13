@@ -36,7 +36,7 @@ class PipelineProperties(object):
 
         'name': 'str',
 
-        'logs': 'list[ResponsePipeline]',
+        'logs': 'list[PipelineResponse]',
 
         'tcp_address': 'str',
 
@@ -113,7 +113,7 @@ class PipelineProperties(object):
         The information of the log aggregator  # noqa: E501
 
         :return: The logs of this PipelineProperties.  # noqa: E501
-        :rtype: list[ResponsePipeline]
+        :rtype: list[PipelineResponse]
         """
         return self._logs
 
@@ -124,7 +124,7 @@ class PipelineProperties(object):
         The information of the log aggregator  # noqa: E501
 
         :param logs: The logs of this PipelineProperties.  # noqa: E501
-        :type logs: list[ResponsePipeline]
+        :type logs: list[PipelineResponse]
         """
 
         self._logs = logs

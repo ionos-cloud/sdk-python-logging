@@ -1,4 +1,4 @@
-# CreateRequestPipeline
+# PipelineCreatePropertiesLogs
 
 ## Properties
 | Name | Type | Description | Notes |

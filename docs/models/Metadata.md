@@ -12,6 +12,6 @@ Metadata of the resource
 | **last_modified_by** | **str** |  | [optional]  |
 | **last_modified_by_user_id** | **str** |  | [optional]  |
 | **last_modified_by_user_uuid** | **str** |  | [optional]  |
-| **status** | **str** | The current status reported back by the pipeline. | [optional]  |
+| **state** | **str** | The current state reported back by the pipeline. | [optional]  |
 
 

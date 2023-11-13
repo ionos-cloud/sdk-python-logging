@@ -102,6 +102,14 @@ You can use http proxies by setting the following environment variables:
 - `IONOS_HTTP_PROXY` - proxy URL
 - `IONOS_HTTP_PROXY_HEADERS` - proxy headers
 
+Each line in `IONOS_HTTP_PROXY_HEADERS` represents one header, where the header name and value is separated by a colon. Newline characters within a value need to be escaped. See this example:
+```
+Connection: Keep-Alive
+User-Info: MyID
+User-Group: my long\nheader value
+```
+
+
 ### Changing the base URL
 
 Base URL for the HTTP operation can be changed in the following way:
@@ -137,10 +145,10 @@ All URIs are relative to *https://logging.de-txl.ionos.com*
 
 | Class | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- | ------------- |
-| PipelinesApi | [**pipeline_key**](docs/api/PipelinesApi.md#pipeline_key) | **POST** /pipelines/{pipelineId}/key | Renews the key of a Pipeline |
 | PipelinesApi | [**pipelines_delete**](docs/api/PipelinesApi.md#pipelines_delete) | **DELETE** /pipelines/{pipelineId} | Delete a pipeline |
 | PipelinesApi | [**pipelines_find_by_id**](docs/api/PipelinesApi.md#pipelines_find_by_id) | **GET** /pipelines/{pipelineId} | Fetch a pipeline |
 | PipelinesApi | [**pipelines_get**](docs/api/PipelinesApi.md#pipelines_get) | **GET** /pipelines | List pipelines |
+| PipelinesApi | [**pipelines_key_post**](docs/api/PipelinesApi.md#pipelines_key_post) | **POST** /pipelines/{pipelineId}/key | Renews the key of a Pipeline |
 | PipelinesApi | [**pipelines_patch**](docs/api/PipelinesApi.md#pipelines_patch) | **PATCH** /pipelines/{pipelineId} | Patch a pipeline |
 | PipelinesApi | [**pipelines_post**](docs/api/PipelinesApi.md#pipelines_post) | **POST** /pipelines | Create a pipeline |
 
@@ -152,24 +160,23 @@ All URIs are relative to *https://logging.de-txl.ionos.com*
 <details >
 <summary title="Click to toggle">API models list</summary>
 
- - [CreateRequest](docs/models/CreateRequest)
- - [CreateRequestPipeline](docs/models/CreateRequestPipeline)
- - [CreateRequestProperties](docs/models/CreateRequestProperties)
  - [Destination](docs/models/Destination)
  - [ErrorMessage](docs/models/ErrorMessage)
  - [ErrorResponse](docs/models/ErrorResponse)
  - [Metadata](docs/models/Metadata)
- - [PatchRequest](docs/models/PatchRequest)
- - [PatchRequestPipeline](docs/models/PatchRequestPipeline)
- - [PatchRequestProperties](docs/models/PatchRequestProperties)
  - [Pipeline](docs/models/Pipeline)
- - [PipelineKey200Response](docs/models/PipelineKey200Response)
+ - [PipelineCreate](docs/models/PipelineCreate)
+ - [PipelineCreateProperties](docs/models/PipelineCreateProperties)
+ - [PipelineCreatePropertiesLogs](docs/models/PipelineCreatePropertiesLogs)
  - [PipelineListResponse](docs/models/PipelineListResponse)
+ - [PipelinePatch](docs/models/PipelinePatch)
+ - [PipelinePatchProperties](docs/models/PipelinePatchProperties)
  - [PipelineProperties](docs/models/PipelineProperties)
+ - [PipelineResponse](docs/models/PipelineResponse)
+ - [PipelineResponseAllOf](docs/models/PipelineResponseAllOf)
+ - [PipelineResponseAllOf1](docs/models/PipelineResponseAllOf1)
+ - [PipelinesKeyPost200Response](docs/models/PipelinesKeyPost200Response)
  - [Processor](docs/models/Processor)
- - [ResponsePipeline](docs/models/ResponsePipeline)
- - [ResponsePipelineAllOf](docs/models/ResponsePipelineAllOf)
- - [ResponsePipelineAllOf1](docs/models/ResponsePipelineAllOf1)
 
 
 [[Back to API list]](#documentation-for-api-endpoints) [[Back to Model list]](#documentation-for-models)

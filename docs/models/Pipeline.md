@@ -5,7 +5,6 @@ pipeline response
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
 | **id** | **str** | The unique ID of the resource. | [optional]  |
-| **type** | **str** |  | [optional]  |
 | **metadata** | [**Metadata**](Metadata.md) |  | [optional]  |
 | **properties** | [**PipelineProperties**](PipelineProperties.md) |  | [optional]  |
 

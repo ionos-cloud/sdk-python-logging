@@ -50,7 +50,7 @@ class Metadata(object):
 
         'last_modified_by_user_uuid': 'str',
 
-        'status': 'str',
+        'state': 'str',
     }
 
     attribute_map = {
@@ -71,10 +71,10 @@ class Metadata(object):
 
         'last_modified_by_user_uuid': 'lastModifiedByUserUuid',
 
-        'status': 'status',
+        'state': 'state',
     }
 
-    def __init__(self, created_date=None, created_by=None, created_by_user_id=None, created_by_user_uuid=None, last_modified_date=None, last_modified_by=None, last_modified_by_user_id=None, last_modified_by_user_uuid=None, status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_date=None, created_by=None, created_by_user_id=None, created_by_user_uuid=None, last_modified_date=None, last_modified_by=None, last_modified_by_user_id=None, last_modified_by_user_uuid=None, state=None, local_vars_configuration=None):  # noqa: E501
         """Metadata - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -88,7 +88,7 @@ class Metadata(object):
         self._last_modified_by = None
         self._last_modified_by_user_id = None
         self._last_modified_by_user_uuid = None
-        self._status = None
+        self._state = None
         self.discriminator = None
 
         if created_date is not None:
@@ -107,8 +107,8 @@ class Metadata(object):
             self.last_modified_by_user_id = last_modified_by_user_id
         if last_modified_by_user_uuid is not None:
             self.last_modified_by_user_uuid = last_modified_by_user_uuid
-        if status is not None:
-            self.status = status
+        if state is not None:
+            self.state = state
 
 
     @property
@@ -284,33 +284,33 @@ class Metadata(object):
         self._last_modified_by_user_uuid = last_modified_by_user_uuid
 
     @property
-    def status(self):
-        """Gets the status of this Metadata.  # noqa: E501
+    def state(self):
+        """Gets the state of this Metadata.  # noqa: E501
 
-        The current status reported back by the pipeline.  # noqa: E501
+        The current state reported back by the pipeline.  # noqa: E501
 
-        :return: The status of this Metadata.  # noqa: E501
+        :return: The state of this Metadata.  # noqa: E501
         :rtype: str
         """
-        return self._status
+        return self._state
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this Metadata.
+    @state.setter
+    def state(self, state):
+        """Sets the state of this Metadata.
 
-        The current status reported back by the pipeline.  # noqa: E501
+        The current state reported back by the pipeline.  # noqa: E501
 
-        :param status: The status of this Metadata.  # noqa: E501
-        :type status: str
+        :param state: The state of this Metadata.  # noqa: E501
+        :type state: str
         """
         allowed_values = ["AVAILABLE", "PROVISIONING", "DESTROYING", "FAILED", "UNKNOWN"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and state not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
+                "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501
+                .format(state, allowed_values)
             )
 
-        self._status = status
+        self._state = state
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}

@@ -17,143 +17,6 @@ class PipelinesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def pipeline_key(self, pipeline_id, **kwargs):  # noqa: E501
-        """Renews the key of a Pipeline  # noqa: E501
-
-        Generates a new key for a pipeline invalidating the old one. The key is used for authentication when sending logs (Shared_Key parameter in the context of fluent-bit).  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.pipeline_key(pipeline_id, async_req=True)
-        >>> result = thread.get()
-
-        :param pipeline_id: The unique ID of the pipeline (required)
-        :type pipeline_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: PipelineKey200Response
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.pipeline_key_with_http_info(pipeline_id, **kwargs)  # noqa: E501
-
-    def pipeline_key_with_http_info(self, pipeline_id, **kwargs):  # noqa: E501
-        """Renews the key of a Pipeline  # noqa: E501
-
-        Generates a new key for a pipeline invalidating the old one. The key is used for authentication when sending logs (Shared_Key parameter in the context of fluent-bit).  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.pipeline_key_with_http_info(pipeline_id, async_req=True)
-        >>> result = thread.get()
-
-        :param pipeline_id: The unique ID of the pipeline (required)
-        :type pipeline_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(PipelineKey200Response, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'pipeline_id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                'response_type',
-                'query_params'
-            ]
-        )
-
-        for local_var_params_key, local_var_params_val in six.iteritems(local_var_params['kwargs']):
-            if local_var_params_key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method pipeline_key" % local_var_params_key
-                )
-            local_var_params[local_var_params_key] = local_var_params_val
-        del local_var_params['kwargs']
-        # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and ('pipeline_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['pipeline_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `pipeline_key`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'pipeline_id' in local_var_params:
-            path_params['pipelineId'] = local_var_params['pipeline_id']  # noqa: E501
-
-        query_params = list(local_var_params.get('query_params', {}).items())
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['tokenAuth']  # noqa: E501
-
-        response_type = 'PipelineKey200Response'
-        if 'response_type' in kwargs:
-            response_type = kwargs['response_type']
-
-        return self.api_client.call_api(
-            '/pipelines/{pipelineId}/key', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=response_type,  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get('_request_auth'))
-
     def pipelines_delete(self, pipeline_id, **kwargs):  # noqa: E501
         """Delete a pipeline  # noqa: E501
 
@@ -579,6 +442,143 @@ class PipelinesApi(object):
             collection_formats=collection_formats,
             _request_auth=local_var_params.get('_request_auth'))
 
+    def pipelines_key_post(self, pipeline_id, **kwargs):  # noqa: E501
+        """Renews the key of a Pipeline  # noqa: E501
+
+        Generates a new key for a pipeline invalidating the old one. The key is used for authentication when sending logs (Shared_Key parameter in the context of fluent-bit).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.pipelines_key_post(pipeline_id, async_req=True)
+        >>> result = thread.get()
+
+        :param pipeline_id: The unique ID of the pipeline (required)
+        :type pipeline_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: PipelinesKeyPost200Response
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.pipelines_key_post_with_http_info(pipeline_id, **kwargs)  # noqa: E501
+
+    def pipelines_key_post_with_http_info(self, pipeline_id, **kwargs):  # noqa: E501
+        """Renews the key of a Pipeline  # noqa: E501
+
+        Generates a new key for a pipeline invalidating the old one. The key is used for authentication when sending logs (Shared_Key parameter in the context of fluent-bit).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.pipelines_key_post_with_http_info(pipeline_id, async_req=True)
+        >>> result = thread.get()
+
+        :param pipeline_id: The unique ID of the pipeline (required)
+        :type pipeline_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(PipelinesKeyPost200Response, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'pipeline_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                'response_type',
+                'query_params'
+            ]
+        )
+
+        for local_var_params_key, local_var_params_val in six.iteritems(local_var_params['kwargs']):
+            if local_var_params_key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method pipelines_key_post" % local_var_params_key
+                )
+            local_var_params[local_var_params_key] = local_var_params_val
+        del local_var_params['kwargs']
+        # verify the required parameter 'pipeline_id' is set
+        if self.api_client.client_side_validation and ('pipeline_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pipeline_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `pipelines_key_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'pipeline_id' in local_var_params:
+            path_params['pipelineId'] = local_var_params['pipeline_id']  # noqa: E501
+
+        query_params = list(local_var_params.get('query_params', {}).items())
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['tokenAuth']  # noqa: E501
+
+        response_type = 'PipelinesKeyPost200Response'
+        if 'response_type' in kwargs:
+            response_type = kwargs['response_type']
+
+        return self.api_client.call_api(
+            '/pipelines/{pipelineId}/key', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=response_type,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get('_request_auth'))
+
     def pipelines_patch(self, pipeline_id, pipeline, **kwargs):  # noqa: E501
         """Patch a pipeline  # noqa: E501
 
@@ -592,7 +592,7 @@ class PipelinesApi(object):
         :param pipeline_id: The unique ID of the pipeline (required)
         :type pipeline_id: str
         :param pipeline: The modified pipeline. (required)
-        :type pipeline: PatchRequest
+        :type pipeline: PipelinePatch
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -624,7 +624,7 @@ class PipelinesApi(object):
         :param pipeline_id: The unique ID of the pipeline (required)
         :type pipeline_id: str
         :param pipeline: The modified pipeline. (required)
-        :type pipeline: PatchRequest
+        :type pipeline: PipelinePatch
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -742,7 +742,7 @@ class PipelinesApi(object):
         >>> result = thread.get()
 
         :param pipeline: The pipeline to be created. (required)
-        :type pipeline: CreateRequest
+        :type pipeline: PipelineCreate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -772,7 +772,7 @@ class PipelinesApi(object):
         >>> result = thread.get()
 
         :param pipeline: The pipeline to be created. (required)
-        :type pipeline: CreateRequest
+        :type pipeline: PipelineCreate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code

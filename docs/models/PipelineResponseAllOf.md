@@ -1,8 +1,8 @@
-# ResponsePipelineAllOf1
+# PipelineResponseAllOf
 
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **destinations** | [**list[Destination]**](Destination.md) |  | [optional]  |
+| **public** | **bool** |  | [optional]  |
 
 
